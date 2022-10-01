@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { colorsData } from "./assets/color";
+
+import ColorCard from "./components/colorCard/ColorCard";
+
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [colorList, setColorList] = useState(colorsData);
+
+  const colorsEl = colorList.map((color) => (
+    <ColorCard key={color.id} color={color.hexColor} />
+  ));
+
+  return <ul className="cards">{colorsEl}</ul>;
 }
 
 export default App;
