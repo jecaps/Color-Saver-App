@@ -1,3 +1,5 @@
+@import "./components/colorCard/ColorCard.css";
+
 .App {
   text-align: center;
 }
