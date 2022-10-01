@@ -5,6 +5,7 @@ function ColorCard({ color }) {
 
   function changeColorHandler(e) {
     e.preventDefault();
+    navigator.clipboard.writeText(e.target.value);
     setNewColor(e.target.value);
   }
 
@@ -16,12 +17,12 @@ function ColorCard({ color }) {
         defaultValue={newColor}
         onChange={changeColorHandler}
       />
-      <p
+      <button
         className="card__text"
-        onClick={() => navigator.clipboard.writeText(newColor)}
+        // onClick={() => }
       >
         {newColor}
-      </p>
+      </button>
     </li>
   );
 }
