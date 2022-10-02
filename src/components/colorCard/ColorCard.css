@@ -9,16 +9,11 @@
 
 .card {
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  width: 90%;
+  width: 150px;
   height: 150px;
   border-radius: 8px;
-}
-
-.card__input {
-  width: 50%;
 }
 
 .card__text {
