@@ -1,28 +1,17 @@
 import { useState } from "react";
 
-function ColorCard({ color }) {
-  const [newColor, setNewColor] = useState(color);
-
-  function changeColorHandler(e) {
-    e.preventDefault();
-    navigator.clipboard.writeText(e.target.value);
-    setNewColor(e.target.value);
-  }
+function ColorCard({ colorCode }) {
+  const [newColor, setNewColor] = useState(colorCode);
 
   return (
     <li className="card" style={{ backgroundColor: `${newColor}` }}>
       <input
-        className="card__input"
-        type="color"
-        defaultValue={newColor}
-        onChange={changeColorHandler}
-      />
-      <button
         className="card__text"
-        // onClick={() => }
-      >
-        {newColor}
-      </button>
+        type="text"
+        defaultValue={newColor}
+        onClick={(e) => navigator.clipboard.writeText(e.target.value)}
+        onChange={(e) => setNewColor(e.target.value)}
+      />
     </li>
   );
 }
