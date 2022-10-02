@@ -1,10 +1,20 @@
 import { useState } from "react";
 
-function Form() {
-  const [colorPicked, setColorPicked] = useState("#000000");
+function Form({ addColor }) {
+  const [pickedColor, setPickedColor] = useState("#000000");
+
+  console.log(pickedColor);
+
+  const onAddColor = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addColor(pickedColor);
+    setPickedColor("#000000");
+    e.target.reset();
+  };
 
   const colorPickerHandler = (e) => {
-    setColorPicked(e.target.value);
+    setPickedColor(e.target.value);
   };
 
   return (
@@ -12,16 +22,26 @@ function Form() {
       action=""
       type="submit"
       className="form"
-      style={{ backgroundColor: colorPicked }}
+      style={{ backgroundColor: pickedColor }}
+      onSubmit={onAddColor}
     >
       <input
         className="form__input"
+        id="color"
         type="color"
-        defaultValue={colorPicked}
+        defaultValue={pickedColor}
+        onInput={colorPickerHandler}
+      />
+      <input
+        className="form__text"
+        id="text"
+        type="text"
+        defaultValue={pickedColor}
         onChange={colorPickerHandler}
       />
-      <p className="form__text">{colorPicked}</p>
-      <button type="submit">Add Color</button>
+      <button className="form__btn" type="submit">
+        Add Color
+      </button>
     </form>
   );
 }
