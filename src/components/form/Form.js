@@ -40,7 +40,7 @@ function Form({ addColor }) {
         onChange={colorPickerHandler}
       />
       <button className="form__btn" type="submit">
-        Add Color
+        +
       </button>
     </form>
   );

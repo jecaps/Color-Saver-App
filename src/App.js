@@ -40,8 +40,11 @@ function App() {
 
   return (
     <>
-      <Form addColor={addColorCard} />
-      <ul className="cards">{colorListElement}</ul>;
+      <ul className="cards">
+        {colorListElement}
+        <Form addColor={addColorCard} />
+      </ul>
+      ;
     </>
   );
 }

@@ -1,6 +1,6 @@
 .form {
-  width: 200px;
-  height: 200px;
+  /* width: 150px; */
+  height: 150px;
   /* border: 1px solid black; */
   border-radius: 8px;
   margin: auto;
@@ -31,4 +31,12 @@
   color: #000;
   transform: scale(0.95);
   border: 2px solid #069e2d;
+}
+
+.form__btn {
+  all: unset;
+  background-color: #2b9bdc;
+  color: #f8fff4;
+  padding: 0 6px 3px 6px;
+  border-radius: 50%;
 }
