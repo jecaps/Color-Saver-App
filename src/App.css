@@ -1,4 +1,5 @@
 @import "./components/colorCard/ColorCard.css";
+@import "./components/form/Form.css";
 
 .App {
   text-align: center;
