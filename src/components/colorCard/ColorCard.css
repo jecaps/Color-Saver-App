@@ -11,6 +11,7 @@
 
 .card {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -33,24 +34,26 @@
   vertical-align: middle;
 }
 
-.card__text {
+.card__input,
+.card__name {
   all: unset;
   background-color: rgba(255, 255, 255, 0.4);
   color: #2a2d34;
   text-align: center;
   padding: 4px 10px;
+  margin: 4px;
   width: 50%;
   border: 1px solid rgba(169, 169, 169, 0.3);
   border-radius: 4px;
   transition: transform 0.1s ease-out;
 }
-/* 
-.card__text:hover {
-  background-color: #fff;
-  color: rgb(95, 93, 93);
-} */
 
-.card__text:focus {
+.card__name {
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 0.8rem;
+}
+
+.card__input:focus {
   background-color: #f8fff4;
   color: #000;
   transform: scale(0.95);
