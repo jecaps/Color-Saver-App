@@ -18,8 +18,17 @@ function App() {
     ]);
   };
 
+  const deleteColorCard = (colordId) => {
+    setColorList(colorList.filter((color) => color.id !== colordId));
+  };
+
   const colorListElement = colorList.map((color) => (
-    <ColorCard key={color.id} colorCode={color.hexColor} />
+    <ColorCard
+      key={color.id}
+      id={color.id}
+      colorCode={color.hexColor}
+      deleteColor={deleteColorCard}
+    />
   ));
 
   return (
