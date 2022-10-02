@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function Form({ addColor }) {
-  const [pickedColor, setPickedColor] = useState("#000000");
+  const [pickedColor, setPickedColor] = useState("#D3D0CB");
 
   console.log(pickedColor);
 
@@ -9,7 +9,7 @@ function Form({ addColor }) {
     e.preventDefault();
     e.stopPropagation();
     addColor(pickedColor);
-    setPickedColor("#000000");
+    setPickedColor("#D3D0CB");
     e.target.reset();
   };
 
