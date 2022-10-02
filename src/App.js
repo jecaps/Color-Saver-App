@@ -9,7 +9,7 @@ function App() {
   const [colorList, setColorList] = useState(colorsData);
 
   const colorsEl = colorList.map((color) => (
-    <ColorCard key={color.id} color={color.hexColor} />
+    <ColorCard key={color.id} colorCode={color.hexColor} />
   ));
 
   return <ul className="cards">{colorsEl}</ul>;
