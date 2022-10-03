@@ -23,13 +23,16 @@ function Form({ addColor }) {
       style={{ backgroundColor: pickedColor }}
       onSubmit={onAddColor}
     >
-      <input
-        className="form__input"
-        id="color"
-        type="color"
-        defaultValue={pickedColor}
-        onInput={colorPickerHandler}
-      />
+      <div className="form__input-container">
+        <input
+          className="form__input"
+          id="color"
+          type="color"
+          defaultValue={pickedColor}
+          onInput={colorPickerHandler}
+        />
+        <span className="form__tooltip">Pick Color</span>
+      </div>
       <input
         className="form__text"
         id="text"
