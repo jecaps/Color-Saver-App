@@ -13,6 +13,7 @@ function App() {
   const [colorList, setColorList] = useState(
     loadFromLocal("saved colors") ?? colorsData
   );
+  const [allowEdit, setAllowEdit] = useState(false);
 
   const addColorCard = (color) => {
     setColorList([
@@ -23,6 +24,16 @@ function App() {
 
   const deleteColorCard = (colordId) => {
     setColorList(colorList.filter((color) => color.id !== colordId));
+  };
+
+  const isEditAllowed = () => {
+    setAllowEdit(!allowEdit);
+  };
+
+  const changeTitle = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.target);
+    console.log(form);
   };
 
   const colorListElement = colorList.map((color) => (
@@ -41,10 +52,33 @@ function App() {
   return (
     <>
       <main className="main">
-        <ul className="cards">
-          {colorListElement}
-          <Form addColor={addColorCard} />
-        </ul>
+        <section className="page">
+          <h1 className="title">Coolorette</h1>
+          <form
+            action=""
+            type="submit"
+            className="colors"
+            onSubmit={changeTitle}
+          >
+            <input
+              type="text"
+              className="colors__title"
+              defaultValue={"Color Palette 1"}
+              readOnly={allowEdit ? "" : "readonly"}
+            />
+            <button
+              type={allowEdit ? "submit" : "button"}
+              className="colors__btn"
+              onClick={isEditAllowed}
+            >
+              {allowEdit ? "save" : "edit"}
+            </button>
+          </form>
+          <ul className="cards">
+            {colorListElement}
+            <Form addColor={addColorCard} />
+          </ul>
+        </section>
       </main>
     </>
   );
