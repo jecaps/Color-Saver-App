@@ -3,8 +3,6 @@ import { useState } from "react";
 function Form({ addColor }) {
   const [pickedColor, setPickedColor] = useState("#D3D0CB");
 
-  console.log(pickedColor);
-
   const onAddColor = (e) => {
     e.preventDefault();
     e.stopPropagation();

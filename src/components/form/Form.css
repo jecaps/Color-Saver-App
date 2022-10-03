@@ -1,7 +1,7 @@
 .form {
   /* width: 150px; */
   height: 150px;
-  /* border: 1px solid black; */
+  border: 2px solid black;
   border-radius: 8px;
   margin: auto;
   display: flex;
