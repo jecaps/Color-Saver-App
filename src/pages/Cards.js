@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
+import { colorsData } from "../assets/color";
 
 import ColorCard from "../components/colorCard/ColorCard";
 import Form from "../components/form/Form";
@@ -14,23 +15,30 @@ function Cards({
   const [allowEdit, setAllowEdit] = useState(false);
 
   const addColorCard = (color) => {
-    // palettesList
-    //   .filter((palette) => paletteId === palette.id)[0]
-    //   .colors.push({ id: nanoid(), hexCode: color });
-    palettesList = palettesList.map((palette) =>
-      paletteId === palette.id
-        ? {
-            ...palette,
-            colors: [...palette.colors, { id: nanoid(), hexCode: color }],
-          }
-        : { ...palette }
+    setPalettesList(
+      palettesList.map((palette) =>
+        paletteId === palette.id
+          ? {
+              ...palette,
+              colors: [...palette.colors, { id: nanoid(), hexCode: color }],
+            }
+          : { ...palette }
+      )
     );
-    setPalettesList([...palettesList]);
   };
 
-  // const deleteColorCard = (colordId) => {
-  //   setColorList(colorList.filter((color) => color.id !== colordId));
-  // };
+  const deleteColorCard = (colordId) => {
+    setPalettesList(
+      palettesList.map((palette) =>
+        paletteId === palette.id
+          ? {
+              ...palette,
+              colors: palette.colors.filter((color) => color.id !== colordId),
+            }
+          : { ...palette }
+      )
+    );
+  };
 
   const isEditAllowed = () => {
     setAllowEdit(!allowEdit);
@@ -47,11 +55,9 @@ function Cards({
       key={color.id}
       id={color.id}
       colorCode={color.hexCode}
-      // deleteColor={deleteColorCard}
+      deleteColor={deleteColorCard}
     />
   ));
-
-  // useEffect(() => {}, [colorList]);
 
   return (
     <li className="page">

@@ -17,37 +17,7 @@ function App() {
 
   console.log(palettesList);
 
-  // const addColorCard = (color) => {
-  //   setPalettesList([
-  //     ...palettesList,
-  //     { id: nanoid(), hexColor: color.toUpperCase() },
-  //   ]);
-  // };
-
-  // const deleteColorCard = (colordId) => {
-  //   setPalettessList(palettesList.filter((color) => color.id !== colordId));
-  // };
-
-  // const isEditAllowed = () => {
-  //   setAllowEdit(!allowEdit);
-  // };
-
-  // const changeTitle = (e) => {
-  //   e.preventDefault();
-  //   const form = new FormData(e.target);
-  //   console.log(form);
-  // };
-
-  // const palettesListElement = palettesList.map((color) => (
-  //   <ColorCard
-  //     key={color.id}
-  //     id={color.id}
-  //     colorCode={color.hexColor}
-  //     deleteColor={deleteColorCard}
-  //   />
-  // ));
-
-  const colorPalette = palettesList.map((palette) => (
+  const colorPalettes = palettesList.map((palette) => (
     <Cards
       key={palette.id}
       paletteId={palette.id}
@@ -66,33 +36,7 @@ function App() {
     <>
       <main className="main">
         <h1 className="title">Coolorette</h1>
-        {/* <li className="page">
-          <form
-            action=""
-            type="submit"
-            className="colors"
-            onSubmit={changeTitle}
-          >
-            <input
-              type="text"
-              className="colors__title"
-              defaultValue={"Color Palette 1"}
-              readOnly={allowEdit ? "" : "readonly"}
-            />
-            <button
-              type={allowEdit ? "submit" : "button"}
-              className="colors__btn"
-              onClick={isEditAllowed}
-            >
-              {allowEdit ? "save" : "edit"}
-            </button>
-          </form>
-          <ul className="cards">
-            {palettesListElement}
-            <Form addColor={addColorCard} />
-          </ul>
-        </li> */}
-        {colorPalette}
+        <ul className="palettes">{colorPalettes}</ul>
       </main>
     </>
   );
