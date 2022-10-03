@@ -1,59 +1,72 @@
-import { nanoid } from "nanoid";
+// import { nanoid } from "nanoid";
 
 import { useState, useEffect } from "react";
 import { colorsData } from "./assets/color";
 
-import Form from "./components/form/Form";
-import ColorCard from "./components/colorCard/ColorCard";
+// import Form from "./components/form/Form";
+// import ColorCard from "./components/colorCard/ColorCard";
+import Cards from "./pages/Cards";
 import { saveToLocal, loadFromLocal } from "./lib/localStorage";
 
 import "./App.css";
 
 function App() {
-  const [colorList, setColorList] = useState(
-    loadFromLocal("saved colors") ?? colorsData
+  const [palettesList, setPalettesList] = useState(
+    loadFromLocal("saved palettes") ?? colorsData
   );
-  const [allowEdit, setAllowEdit] = useState(false);
 
-  const addColorCard = (color) => {
-    setColorList([
-      ...colorList,
-      { id: nanoid(), hexColor: color.toUpperCase() },
-    ]);
-  };
+  console.log(palettesList);
 
-  const deleteColorCard = (colordId) => {
-    setColorList(colorList.filter((color) => color.id !== colordId));
-  };
+  // const addColorCard = (color) => {
+  //   setPalettesList([
+  //     ...palettesList,
+  //     { id: nanoid(), hexColor: color.toUpperCase() },
+  //   ]);
+  // };
 
-  const isEditAllowed = () => {
-    setAllowEdit(!allowEdit);
-  };
+  // const deleteColorCard = (colordId) => {
+  //   setPalettessList(palettesList.filter((color) => color.id !== colordId));
+  // };
 
-  const changeTitle = (e) => {
-    e.preventDefault();
-    const form = new FormData(e.target);
-    console.log(form);
-  };
+  // const isEditAllowed = () => {
+  //   setAllowEdit(!allowEdit);
+  // };
 
-  const colorListElement = colorList.map((color) => (
-    <ColorCard
-      key={color.id}
-      id={color.id}
-      colorCode={color.hexColor}
-      deleteColor={deleteColorCard}
+  // const changeTitle = (e) => {
+  //   e.preventDefault();
+  //   const form = new FormData(e.target);
+  //   console.log(form);
+  // };
+
+  // const palettesListElement = palettesList.map((color) => (
+  //   <ColorCard
+  //     key={color.id}
+  //     id={color.id}
+  //     colorCode={color.hexColor}
+  //     deleteColor={deleteColorCard}
+  //   />
+  // ));
+
+  const colorPalette = palettesList.map((palette) => (
+    <Cards
+      key={palette.id}
+      paletteId={palette.id}
+      paletteTitle={palette.title}
+      paletteColors={palette.colors}
+      palettesList={palettesList}
+      setPalettesList={setPalettesList}
     />
   ));
 
   useEffect(() => {
-    saveToLocal("saved colors", colorList);
-  }, [colorList]);
+    saveToLocal("saved palettes", palettesList);
+  }, [palettesList]);
 
   return (
     <>
       <main className="main">
-        <section className="page">
-          <h1 className="title">Coolorette</h1>
+        <h1 className="title">Coolorette</h1>
+        {/* <li className="page">
           <form
             action=""
             type="submit"
@@ -75,10 +88,11 @@ function App() {
             </button>
           </form>
           <ul className="cards">
-            {colorListElement}
+            {palettesListElement}
             <Form addColor={addColorCard} />
           </ul>
-        </section>
+        </li> */}
+        {colorPalette}
       </main>
     </>
   );
