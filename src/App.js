@@ -39,10 +39,12 @@ function App() {
 
   return (
     <>
+      <header className="header">
+        <h1 className="header__title">Coolorette</h1>
+      </header>
       <main className="main">
-        <h1 className="title">Coolorette</h1>
         <ul className="palettes">{colorPalettes}</ul>
-        <button className="add-palette" onClick={addPalette}>
+        <button className="add-btn" onClick={addPalette}>
           Add New Palette
         </button>
       </main>
