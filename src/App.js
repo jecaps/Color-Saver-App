@@ -1,17 +1,26 @@
-// import { nanoid } from "nanoid";
-
 import { useState, useEffect } from "react";
-import { colorsData } from "./assets/color";
 
 import Cards from "./pages/Cards";
 import { saveToLocal, loadFromLocal } from "./lib/localStorage";
 
 import "./App.css";
+import { nanoid } from "nanoid";
 
 function App() {
   const [palettesList, setPalettesList] = useState(
-    loadFromLocal("saved palettes") ?? colorsData
+    loadFromLocal("saved palettes") ?? []
   );
+
+  const addPalette = () => {
+    setPalettesList([
+      ...palettesList,
+      {
+        id: nanoid(),
+        title: "",
+        colors: [],
+      },
+    ]);
+  };
 
   const colorPalettes = palettesList.map((palette) => (
     <Cards
@@ -33,6 +42,9 @@ function App() {
       <main className="main">
         <h1 className="title">Coolorette</h1>
         <ul className="palettes">{colorPalettes}</ul>
+        <button className="add-palette" onClick={addPalette}>
+          Add New Palette
+        </button>
       </main>
     </>
   );

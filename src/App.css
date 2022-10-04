@@ -44,6 +44,7 @@
 
 body {
   margin: 50px;
+  text-align: center;
 }
 
 .title {
@@ -85,4 +86,12 @@ body {
 .palettes {
   list-style: none;
   padding: 0;
+}
+
+.add-palette {
+  all: unset;
+  background-color: #20a39e;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
 }
