@@ -95,3 +95,7 @@ body {
   padding: 10px 20px;
   border-radius: 4px;
 }
+
+.page {
+  padding: 1rem 0;
+}
