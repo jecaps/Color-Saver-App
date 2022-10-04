@@ -96,8 +96,8 @@ function Cards({
         </button>
       </form>
       <ul className="cards">
-        {colorListItems}
         <Form addColor={addColorCard} />
+        {colorListItems}
       </ul>
     </li>
   );
