@@ -84,6 +84,7 @@ function Cards({
           className="colors__title"
           defaultValue={paletteName}
           readOnly={allowEdit ? "" : "readonly"}
+          placeholder="Please Add Title"
           onInput={inputHandler}
         />
         <button
