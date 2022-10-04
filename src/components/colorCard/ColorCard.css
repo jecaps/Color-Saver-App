@@ -7,7 +7,7 @@
   justify-items: center;
   width: 620px;
   margin: auto;
-  border: 1px solid #000;
+  border: 1px solid rgb(184, 184, 184);
   border-radius: 8px;
 }
 
@@ -17,7 +17,6 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  /* width: 150px; */
   height: 150px;
   border-radius: 8px;
 }
