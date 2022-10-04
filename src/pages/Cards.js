@@ -14,6 +14,10 @@ function Cards({
   const [allowEdit, setAllowEdit] = useState(false);
   const [paletteName, setPaletteName] = useState(paletteTitle);
 
+  const deletePalette = () => {
+    setPalettesList(palettesList.filter((palette) => palette.id !== paletteId));
+  };
+
   const addColorCard = (color) => {
     setPalettesList(
       palettesList.map((palette) =>
@@ -77,6 +81,9 @@ function Cards({
 
   return (
     <li className="page">
+      <button className="delete-btn" onClick={deletePalette}>
+        -
+      </button>
       <form action="" type="submit" className="colors" onSubmit={changeTitle}>
         <input
           type="text"
