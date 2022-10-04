@@ -57,14 +57,10 @@ body {
 }
 
 .colors {
-  /* background-color: aqua; */
   padding: 5px;
   position: relative;
   text-align: center;
 }
-
-/* .colors__form {
-} */
 
 .colors__title {
   all: unset;
@@ -84,4 +80,9 @@ body {
 .colors__btn:hover {
   color: #2b9bdc;
   text-decoration: underline;
+}
+
+.palettes {
+  list-style: none;
+  padding: 0;
 }

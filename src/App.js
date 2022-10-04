@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react";
 import { colorsData } from "./assets/color";
 
-// import Form from "./components/form/Form";
-// import ColorCard from "./components/colorCard/ColorCard";
 import Cards from "./pages/Cards";
 import { saveToLocal, loadFromLocal } from "./lib/localStorage";
 
@@ -14,8 +12,6 @@ function App() {
   const [palettesList, setPalettesList] = useState(
     loadFromLocal("saved palettes") ?? colorsData
   );
-
-  console.log(palettesList);
 
   const colorPalettes = palettesList.map((palette) => (
     <Cards

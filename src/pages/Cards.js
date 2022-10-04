@@ -1,6 +1,5 @@
 import { nanoid } from "nanoid";
 import { useEffect, useState } from "react";
-import { colorsData } from "../assets/color";
 
 import ColorCard from "../components/colorCard/ColorCard";
 import Form from "../components/form/Form";
@@ -13,6 +12,7 @@ function Cards({
   setPalettesList,
 }) {
   const [allowEdit, setAllowEdit] = useState(false);
+  const [paletteName, setPaletteName] = useState(paletteTitle);
 
   const addColorCard = (color) => {
     setPalettesList(
@@ -44,10 +44,24 @@ function Cards({
     setAllowEdit(!allowEdit);
   };
 
+  const inputHandler = (e) => {
+    e.preventDefault();
+    setPaletteName(e.target.value);
+  };
+
   const changeTitle = (e) => {
     e.preventDefault();
-    const form = new FormData(e.target);
-    console.log(form);
+
+    setPalettesList(
+      palettesList.map((palette) =>
+        paletteId === palette.id
+          ? {
+              ...palette,
+              title: paletteName,
+            }
+          : { ...palette }
+      )
+    );
   };
 
   const colorListItems = paletteColors.map((color) => (
@@ -59,17 +73,21 @@ function Cards({
     />
   ));
 
+  useEffect(() => {}, [paletteName]);
+
   return (
     <li className="page">
       <form action="" type="submit" className="colors" onSubmit={changeTitle}>
         <input
           type="text"
+          id="palette__title"
           className="colors__title"
-          defaultValue={paletteTitle}
+          defaultValue={paletteName}
           readOnly={allowEdit ? "" : "readonly"}
+          onInput={inputHandler}
         />
         <button
-          type={allowEdit ? "submit" : "button"}
+          type={allowEdit ? "button" : "submit"}
           className="colors__btn"
           onClick={isEditAllowed}
         >
