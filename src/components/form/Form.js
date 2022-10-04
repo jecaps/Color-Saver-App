@@ -7,7 +7,7 @@ function Form({ addColor }) {
     e.preventDefault();
     e.stopPropagation();
     addColor(pickedColor.toUpperCase());
-    setPickedColor("#000000");
+    setPickedColor("#C3C3C3");
     e.target.reset();
   };
 
