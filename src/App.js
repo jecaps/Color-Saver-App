@@ -1,84 +1,52 @@
-import { nanoid } from "nanoid";
-
 import { useState, useEffect } from "react";
-import { colorsData } from "./assets/color";
 
-import Form from "./components/form/Form";
-import ColorCard from "./components/colorCard/ColorCard";
+import Cards from "./pages/Cards";
 import { saveToLocal, loadFromLocal } from "./lib/localStorage";
 
 import "./App.css";
+import { nanoid } from "nanoid";
 
 function App() {
-  const [colorList, setColorList] = useState(
-    loadFromLocal("saved colors") ?? colorsData
+  const [palettesList, setPalettesList] = useState(
+    loadFromLocal("saved palettes") ?? []
   );
-  const [allowEdit, setAllowEdit] = useState(false);
 
-  const addColorCard = (color) => {
-    setColorList([
-      ...colorList,
-      { id: nanoid(), hexColor: color.toUpperCase() },
+  const addPalette = () => {
+    setPalettesList([
+      ...palettesList,
+      {
+        id: nanoid(),
+        title: "",
+        colors: [],
+      },
     ]);
   };
 
-  const deleteColorCard = (colordId) => {
-    setColorList(colorList.filter((color) => color.id !== colordId));
-  };
-
-  const isEditAllowed = () => {
-    setAllowEdit(!allowEdit);
-  };
-
-  const changeTitle = (e) => {
-    e.preventDefault();
-    const form = new FormData(e.target);
-    console.log(form);
-  };
-
-  const colorListElement = colorList.map((color) => (
-    <ColorCard
-      key={color.id}
-      id={color.id}
-      colorCode={color.hexColor}
-      deleteColor={deleteColorCard}
+  const colorPalettes = palettesList.map((palette) => (
+    <Cards
+      key={palette.id}
+      paletteId={palette.id}
+      paletteTitle={palette.title}
+      paletteColors={palette.colors}
+      palettesList={palettesList}
+      setPalettesList={setPalettesList}
     />
   ));
 
   useEffect(() => {
-    saveToLocal("saved colors", colorList);
-  }, [colorList]);
+    saveToLocal("saved palettes", palettesList);
+  }, [palettesList]);
 
   return (
     <>
+      <header className="header">
+        <h1 className="header__title">Coolorette</h1>
+      </header>
       <main className="main">
-        <section className="page">
-          <h1 className="title">Coolorette</h1>
-          <form
-            action=""
-            type="submit"
-            className="colors"
-            onSubmit={changeTitle}
-          >
-            <input
-              type="text"
-              className="colors__title"
-              defaultValue={"Color Palette 1"}
-              readOnly={allowEdit ? "" : "readonly"}
-            />
-            <button
-              type={allowEdit ? "submit" : "button"}
-              className="colors__btn"
-              onClick={isEditAllowed}
-            >
-              {allowEdit ? "save" : "edit"}
-            </button>
-          </form>
-          <ul className="cards">
-            {colorListElement}
-            <Form addColor={addColorCard} />
-          </ul>
-        </section>
+        <ul className="palettes">{colorPalettes}</ul>
+        <button className="add-btn" onClick={addPalette}>
+          Add New Palette
+        </button>
       </main>
     </>
   );

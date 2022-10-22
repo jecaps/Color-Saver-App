@@ -1,31 +1,17 @@
-.cards {
-  list-style: none;
-  padding: 5px;
-  gap: 5px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
-  width: 620px;
-  margin: auto;
-  border: 1px solid #000;
-  border-radius: 8px;
-}
-
 .card {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-  /* width: 150px; */
-  height: 150px;
+  height: 6.875rem;
   border-radius: 8px;
 }
 
 .card__btn {
   all: unset;
   background-color: rgba(255, 255, 255, 0.4);
-  color: #2a2d34;
+  color: #4f5d75;
   padding: 0px 4px 2px 4px;
   font-size: 0.7rem;
   position: absolute;
@@ -40,7 +26,7 @@
 .card__name {
   all: unset;
   background-color: rgba(255, 255, 255, 0.4);
-  color: #2a2d34;
+  color: #4f5d75;
   text-align: center;
   padding: 4px 10px;
   margin: 4px;
@@ -48,11 +34,11 @@
   border: 1px solid rgba(169, 169, 169, 0.3);
   border-radius: 4px;
   transition: transform 0.1s ease-out;
+  font-size: 0.7rem;
 }
 
 .card__name {
   background-color: rgba(255, 255, 255, 0.2);
-  font-size: 0.8rem;
 }
 
 .card__input:focus {

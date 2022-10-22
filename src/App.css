@@ -42,46 +42,95 @@
   }
 }
 
-body {
-  margin: 50px;
+.header {
+  position: fixed;
+  top: 0;
+  background-color: #fff2f1;
+  padding: 0.5rem;
+  box-shadow: 0px 0.5px 6px rgba(0, 0, 0, 0.281);
+  width: 100%;
+  z-index: 1000;
 }
 
-.title {
+.header__title {
   text-align: center;
   font-family: "Coiny", cursive;
   font-size: 2.5rem;
   margin: 0;
-  background: linear-gradient(to right, #1032e0, #40ff1a);
+  background: linear-gradient(to right, #3e7bcc, #ba8f95);
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.main {
+  margin: 5rem auto;
+  max-width: 400px;
+  min-width: 375px;
+  width: 95%;
+}
+
 .colors {
-  /* background-color: aqua; */
   padding: 5px;
   position: relative;
   text-align: center;
 }
 
-/* .colors__form {
-} */
-
 .colors__title {
   all: unset;
+  color: #c37d92;
   caret-color: #ef5b5b;
   font-size: larger;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .colors__btn {
   all: unset;
   position: absolute;
   top: 5px;
-  color: #2a2d34;
+  color: #c37d92;
   font-size: 0.6rem;
 }
 
 .colors__btn:hover {
   color: #2b9bdc;
   text-decoration: underline;
+}
+
+.palettes {
+  list-style: none;
+  padding: 0;
+}
+
+.add-btn {
+  all: unset;
+  margin: 0.5rem;
+  background-color: #00afb9;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.add-btn:focus,
+.add-btn:hover {
+  background-color: #fff;
+  color: #00afb9;
+  border: 1px solid #00afb9;
+}
+
+.page {
+  padding: 1rem 0;
+}
+
+.cards {
+  list-style: none;
+  width: 95%;
+  padding: 5px;
+  gap: 5px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  margin: auto;
+  background-color: #badefc6e;
+  border: 1px solid #79759682;
+  border-radius: 8px;
 }
